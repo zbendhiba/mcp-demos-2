@@ -49,6 +49,13 @@
             "mcp-proxy",
             "http://localhost:8081/mcp/sse/"
         ]
-      }
+      },
+      "demo3-mcp-server": {
+        "command": "uvx",
+        "args": [
+            "mcp-proxy",
+            "http://localhost:8081/mcp/"
+        ]
+      },
   }
 }
