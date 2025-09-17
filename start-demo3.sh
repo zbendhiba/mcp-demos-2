@@ -68,7 +68,7 @@ if [ -n "$PORT_8081_PIDS" ]; then
         pe "kill -9 $pid 2>/dev/null || true"
     done
     p "⏳ Waiting for processes to terminate..."
-    pe "sleep 5"
+    pe "sleep 10"
     # Check if any process is still running
     REMAINING_PIDS=$(lsof -ti:8081 2>/dev/null)
     if [ -n "$REMAINING_PIDS" ]; then
@@ -76,11 +76,28 @@ if [ -n "$PORT_8081_PIDS" ]; then
         for pid in $REMAINING_PIDS; do
             pe "kill -9 $pid 2>/dev/null || true"
         done
-        pe "sleep 3"
+        p "⏳ Waiting longer for processes to terminate..."
+        pe "sleep 10"
+        # Final check
+        FINAL_PIDS=$(lsof -ti:8081 2>/dev/null)
+        if [ -n "$FINAL_PIDS" ]; then
+            p "❌ Port 8081 still in use after multiple attempts (PIDs: $FINAL_PIDS)"
+            p "Please manually kill the processes using: sudo lsof -ti:8081 | xargs kill -9"
+            exit 1
+        fi
     fi
     p "✅ Port 8081 freed!"
 else
     p "✅ Port 8081 is free!"
+fi
+
+# Clean up log files
+p "🧹 Cleaning up log files..."
+if [ -d "logs" ]; then
+    pe "rm -rf logs/*"
+    p "✅ Log files cleaned!"
+else
+    p "ℹ️  No logs directory found"
 fi
 # Final check that port is free
 if lsof -ti:8081 >/dev/null 2>&1; then

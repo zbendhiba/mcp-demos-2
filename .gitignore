@@ -67,3 +67,7 @@ nb-configuration.xml
 
 # Quarkus
 quarkus.log*
+
+# Demo 3 MCP Web Server logs
+demo3-mcp-server.log.*
+demos/demo3-mcp-server-web/logs/**
