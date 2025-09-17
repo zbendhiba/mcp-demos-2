@@ -88,6 +88,55 @@ p "📋 Step 3: Checking current running containers..."
 pe "podman ps"
 p ""
 
+# Step 3.5: Clean up Wanaku configuration
+p "📋 Step 3.5: Cleaning up Wanaku configuration..."
+p "🧹 Removing all tools..."
+# Remove all tools one by one
+TOOLS=$(wanaku tools list | grep -v "name" | awk '{print $1}' | grep -v "^$")
+if [ -n "$TOOLS" ]; then
+    for tool in $TOOLS; do
+        if [ ! -z "$tool" ]; then
+            p "🗑️  Removing tool: $tool"
+            pei "wanaku tools remove --name=\"$tool\""
+        fi
+    done
+    p "✅ All tools removed!"
+else
+    p "✅ No tools to remove"
+fi
+
+p "🧹 Removing all forwards..."
+# Remove all forwards one by one
+FORWARDS=$(wanaku forwards list | grep -v "name" | awk '{print $1}' | grep -v "^$")
+if [ -n "$FORWARDS" ]; then
+    for forward in $FORWARDS; do
+        if [ ! -z "$forward" ]; then
+            p "🗑️  Removing forward: $forward"
+            pei "wanaku forwards remove --name=\"$forward\""
+        fi
+    done
+    p "✅ All forwards removed!"
+else
+    p "✅ No forwards to remove"
+fi
+
+p "🧹 Removing all resources..."
+# Remove all resources one by one
+RESOURCES=$(wanaku resources list | grep -v "name" | awk '{print $1}' | grep -v "^$")
+if [ -n "$RESOURCES" ]; then
+    for resource in $RESOURCES; do
+        if [ ! -z "$resource" ]; then
+            p "🗑️  Removing resource: $resource"
+            pei "wanaku resources remove --name=\"$resource\""
+        fi
+    done
+    p "✅ All resources removed!"
+else
+    p "✅ No resources to remove"
+fi
+p ""
+
+
 # Step 4: Stop and clean up containers
 p "📋 Step 4: Stopping and cleaning up Wanaku containers..."
 p "📦 Stopping containers with docker-compose..."
@@ -109,6 +158,9 @@ p "📋 Cleanup Summary:"
 p "• Claude Desktop has been stopped"
 p "• MCP Inspector has been stopped"
 p "• Ports 6274 and 6275 are now free"
+p "• All Wanaku tools have been removed"
+p "• All Wanaku forwards have been removed"
+p "• All Wanaku resources have been removed"
 p "• All Wanaku containers have been stopped and removed"
 p ""
 
