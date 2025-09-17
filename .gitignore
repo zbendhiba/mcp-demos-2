@@ -71,3 +71,38 @@ quarkus.log*
 # Demo 3 MCP Web Server logs
 demo3-mcp-server.log.*
 demos/demo3-mcp-server-web/logs/**
+
+# Python virtual environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Generated files and logs
+generated_tools.json
+server.log
+*.log
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
