@@ -37,7 +37,7 @@ wait() {
 
 # Clear screen and start demo
 clear
-p "🛑 Demo 4: Stop OpenAPI Server"
+p "🛑  Stop OpenAPI Server"
 p "=============================="
 p ""
 

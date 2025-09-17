@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Demo 4 - Simple OpenAPI Server Setup with demo-magic
+# Demo 4 - Step2 - Simple OpenAPI Server Setup with demo-magic
 # This script demonstrates setting up a simple HTTP server with OpenAPI documentation
 
 ########################
@@ -37,7 +37,7 @@ wait() {
 
 # Clear screen and start demo
 clear
-p "🚀 Demo 4: Simple OpenAPI Server Setup"
+p "🚀 Step 2: Simple OpenAPI Server Setup"
 p "====================================="
 p ""
 
