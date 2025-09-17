@@ -1,0 +1,54 @@
+{
+    "mcpServers": {
+
+
+        "sqlite": {
+          
+          "command": "podman",
+          "args": [
+            "run",
+            "--rm",
+            "-i",
+            "-v",
+            "mcp-test:/mcp",
+            "mcp/sqlite",
+            "--db-path",
+            "/mcp/test.db"
+          ]
+        },
+        "postgres": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-postgres",
+          "postgresql://myuser:your_secret_password@localhost:5432/mydatabase"
+        ]
+      },
+      "filesystem": {
+        "command": "npx",
+        "args": [
+            "-y",
+            "@modelcontextprotocol/server-filesystem",
+            "/Users/zbendhib/riviera/filesystem-repo"
+        ]
+      }
+      ,
+      "wanaku": {
+        "command": "uvx",
+        "args": [
+            "mcp-proxy",
+            "http://localhost:8080/mcp/sse/"
+        ]
+      },
+      "time": {
+        "command" : "/Users/zbendhib/dev/mcp-demos/1-mcp-server-time/target/1-mcp-server-time-1.0-SNAPSHOT-runner"
+      },
+      "bookings": {
+        "command": "uvx",
+        "args": [
+            "mcp-proxy",
+            "http://localhost:8081/mcp/sse/"
+        ]
+      }
+  }
+}

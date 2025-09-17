@@ -1,3 +1,13 @@
+# Demo 1: Try an existing MCP server
+
+In this demo we will try a simple MCP server in order to witness how easy is it to use an MCP server.
+
+## Try an MCP tool
+
+For this demo, we will launch a PostgreSQL MCP server an see how far we can play with it.
+
+The MCP server used is the [Postgresql MCP server](https://github.com/modelcontextprotocol/servers-archived/tree/main/src/postgres).
+
 # Start Wanaku server
 
 ## Requirements: 
