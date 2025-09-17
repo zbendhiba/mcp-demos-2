@@ -50,29 +50,41 @@ pe "./stop-and-cleanup.sh"
 p "✅ Cleanup completed!"
 p ""
 
-# Step 2: Start containers with docker-compose
-p "📋 Step 2: Starting containers with docker-compose..."
+# Step 2: Check and kill processes on port 8080
+p "📋 Step 2: Checking for processes using port 8080..."
+PORT_8080_PID=$(lsof -ti:8080 2>/dev/null)
+if [ -n "$PORT_8080_PID" ]; then
+    p "⚠️  Found process(es) using port 8080: $PORT_8080_PID"
+    pe "kill -9 $PORT_8080_PID"
+    p "✅ Process(es) killed!"
+else
+    p "✅ Port 8080 is free!"
+fi
+p ""
+
+# Step 3: Start containers with docker-compose
+p "📋 Step 3: Starting containers with docker-compose..."
 pe "docker-compose up -d"
 p "✅ Containers started!"
 p ""
 
-# Step 3: Wait a moment for containers to initialize
+# Step 4: Wait a moment for containers to initialize
 p "⏳ Waiting for containers to initialize..."
 pe "sleep 10"
 p ""
 
-# Step 4: Check containers with podman ps
-p "📋 Step 3: Verifying containers are running with podman ps..."
+# Step 5: Check containers with podman ps
+p "📋 Step 5: Verifying containers are running with podman ps..."
 pe "podman ps"
 p "✅ All containers are running!"
 p ""
 
-# Step 5: Check if services registered themselves
-p "📋 Step 4: Checking if services registered themselves with Wanaku..."
+# Step 6: Check if services registered themselves
+p "📋 Step 6: Checking if services registered themselves with Wanaku..."
 pe "wanaku targets tools list"
 p ""
 
-# Step 6: Show additional useful commands
+# Step 7: Show additional useful commands
 p "📋 Additional useful commands:"
 p "• View logs: docker-compose logs -f"
 p "• Check status: docker-compose ps"
