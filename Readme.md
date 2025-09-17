@@ -25,6 +25,15 @@ Execute this script.
 
 Follow the given prompts for the demo.
 
+## Stop demo 1
+
+```shell
+./stop-demo1.sh
+```
+
+# Demo 2 : Create a Quarkus MCP server and try it - stdio
+
+
 
 # Start Wanaku server
 

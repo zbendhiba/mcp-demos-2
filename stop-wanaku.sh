@@ -51,7 +51,11 @@ p ""
 
 # Step 2: Stop and clean up containers
 p "📋 Step 2: Stopping and cleaning up Wanaku containers..."
-pe "./stop-and-cleanup.sh"
+p "📦 Stopping containers with docker-compose..."
+pe "docker-compose down"
+p "🧹 Removing any remaining Wanaku containers..."
+pe "podman stop $(podman ps -q --filter 'name=wanaku-') 2>/dev/null || true"
+pe "podman rm $(podman ps -aq --filter 'name=wanaku-') 2>/dev/null || true"
 p "✅ Cleanup completed!"
 p ""
 

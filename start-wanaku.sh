@@ -81,7 +81,7 @@ p ""
 
 # Step 6: Check if services registered themselves
 p "📋 Step 6: Checking if services registered themselves with Wanaku..."
-pe "wanaku targets tools list"
+pe "wanaku capabilities list"
 p ""
 
 # Step 7: Show additional useful commands
@@ -90,7 +90,7 @@ p "• View logs: docker-compose logs -f"
 p "• Check status: docker-compose ps"
 p "• Stop services: docker-compose down"
 p "• Restart services: docker-compose restart"
-p "• Stop wanaku server: stop-wanaku.sh"
+p "• Stop wanaku server gracefully: stop-wanaku.sh"
 p ""
 
 p "🎉 Demo completed! Wanaku is ready to use."

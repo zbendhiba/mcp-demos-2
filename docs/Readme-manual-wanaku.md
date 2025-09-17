@@ -47,7 +47,6 @@ Commands:
   tools         Manage tools
   toolset       Manage toolsets
   namespaces    Manage namespaces
-
 ```
 
 ## Checking the Environment
@@ -92,17 +91,20 @@ ce22f4bb58d2  quay.io/wanaku/wanaku-tool-service-kafka:wanaku-0.0.7             
 Now, check if the services registered themselves, so that Wanaku can find them: 
 
 ```shell
-wanaku targets tools list
+wanaku capabilities list
 ```
 
 Expected result: 
 
 ```
-erviceType   port service    host      id
-TOOL_INVOKER 9000 http       10.89.5.4 621c9f5b-050d-4063-8929-df9bc503c9c2
-TOOL_INVOKER 9000 kafka      10.89.5.7 ca676b7f-1cec-4b64-b43b-d171d398bf7e
-TOOL_INVOKER 9000 tavily     10.89.5.6 274b98cf-0cf1-497a-a3e9-01785e136651
-TOOL_INVOKER 9000 camel-yaml 10.89.5.5 66384417-8f32-4c55-ba7b-82add824bbc5
+service    serviceType       host       port status lastSeen
+http       tool-invoker      10.89.5.9  9000 active Wed, Sep 17, 2025 at 12:46:48
+kafka      tool-invoker      10.89.5.8  9000 active Wed, Sep 17, 2025 at 12:46:48
+tavily     tool-invoker      10.89.5.6  9000 active Wed, Sep 17, 2025 at 12:46:47
+camel-yaml tool-invoker      10.89.5.4  9000 active Wed, Sep 17, 2025 at 12:46:48
+ftp        resource-provider 10.89.5.5  9000 active Wed, Sep 17, 2025 at 12:46:47
+file       resource-provider 10.89.5.10 9000 active Wed, Sep 17, 2025 at 12:46:48
+aws2-s3    resource-provider 10.89.5.7  9000 active Wed, Sep 17, 2025 at 12:46:48
 ```
 
 This means that Wanaku is fully up and running, and the downstream services registered themselves with the router.
