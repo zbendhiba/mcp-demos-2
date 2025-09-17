@@ -90,6 +90,7 @@ p "• View logs: docker-compose logs -f"
 p "• Check status: docker-compose ps"
 p "• Stop services: docker-compose down"
 p "• Restart services: docker-compose restart"
+p "• Stop wanaku server: stop-wanaku.sh"
 p ""
 
 p "🎉 Demo completed! Wanaku is ready to use."
