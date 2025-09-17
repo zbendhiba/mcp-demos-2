@@ -128,3 +128,8 @@ p "• The MCP server will connect to: postgresql://myuser:your_secret_password@
 p ""
 
 p "🎉 Demo 1 setup completed! PostgreSQL MCP server is now configured in Claude Desktop."
+
+p "Use these prompts for your demo"
+p ". Can you describe the database mydatabase using your available tools ?"
+p ". Can you create an Entity-Relationship Diagram of the database mydatabase ?"
+p ". Can you show me 5 movies from the database mydatabase and display the result in a tab?"

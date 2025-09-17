@@ -4,9 +4,27 @@ In this demo we will try a simple MCP server in order to witness how easy is it 
 
 ## Try an MCP tool
 
+## Requirements: 
+
+1. Podman or Docker 
+2. Claude Desktop Application
+
 For this demo, we will launch a PostgreSQL MCP server an see how far we can play with it.
 
 The MCP server used is the [Postgresql MCP server](https://github.com/modelcontextprotocol/servers-archived/tree/main/src/postgres).
+
+In order to try it with Claude desktop application, we need to configure the MCP server for Claude and start a postgresql server .
+
+## Launch demo 1
+
+Execute this script.
+
+```shell
+./start-demo1.sh
+```
+
+Follow the given prompts for the demo.
+
 
 # Start Wanaku server
 
