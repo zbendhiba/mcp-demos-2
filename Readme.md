@@ -33,6 +33,20 @@ Follow the given prompts for the demo.
 
 # Demo 2 : Create a Quarkus MCP server and try it - stdio
 
+In order, to make it easy, I've already built the Quarkus project in native mode. The resulting stdio MCP server is located in `demos/demo2-mcp-server-stdio/image` folder.
+
+
+## Launch demo 2
+
+To launch demo 2, execute the following script.
+
+```shell
+./start-demo2.sh
+```
+
+Follow the given prompts for the demo.
+
+
 
 
 # Start Wanaku server
