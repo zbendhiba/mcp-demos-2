@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌤️ Demo 1: Quarkus Tools</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            height: 600px;
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f8f9fa;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            padding: 15px 20px;
+            border-radius: 15px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .message.user {
+            background: #74b9ff;
+            color: white;
+            margin-left: auto;
+            text-align: right;
+            border-radius: 15px 15px 5px 15px;
+        }
+
+        .message.ai {
+            background: #e8f2ff;
+            color: #333;
+            margin-right: auto;
+            border-radius: 15px 15px 15px 5px;
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #e9ecef;
+            border-radius: 25px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .chat-input input:focus {
+            border-color: #74b9ff;
+        }
+
+        .chat-input button {
+            margin-left: 15px;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .chat-input button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(116, 185, 255, 0.4);
+        }
+
+        .examples {
+            margin-top: 30px;
+        }
+
+        .examples h3 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.3rem;
+        }
+
+        .example-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .example-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .example-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-color: #74b9ff;
+        }
+
+        .example-card h4 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .example-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .example-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="/" class="back-button">← Back to Portal</a>
+            <h1>🌤️ Demo 1: Quarkus Tools</h1>
+            <p>Simple but engaging tools built with Quarkus MCP server</p>
+        </div>
+
+        <div class="content">
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message ai">
+                        <strong>🤖 AI Assistant:</strong><br>
+                        Welcome to Demo 1! I have access to simple but fun tools:<br><br>
+                        🌤️ <strong>Weather:</strong> Get simulated weather for any city<br>
+                        🎲 <strong>Random Fact:</strong> Learn something interesting<br>
+                        🧮 <strong>Calculator:</strong> Solve math expressions<br>
+                        👋 <strong>Greeting:</strong> Get a personalized welcome<br><br>
+                        Try asking me something like "What's the weather in Paris?" or "Tell me a random fact!"
+                    </div>
+                </div>
+                
+                <div class="loading" id="loading">
+                    <p>🤔 Thinking...</p>
+                </div>
+
+                <div class="chat-input">
+                    <input type="text" id="messageInput" placeholder="Ask me anything..." />
+                    <button onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+
+            <div class="examples">
+                <h3>💡 Try these examples:</h3>
+                <div class="example-cards">
+                    <div class="example-card" onclick="askExample('What is the weather in Tokyo?')">
+                        <h4>🌤️ Weather Check</h4>
+                        <p>What is the weather in Tokyo?</p>
+                    </div>
+                    
+                    <div class="example-card" onclick="askExample('Tell me a random fact')">
+                        <h4>🎲 Random Fact</h4>
+                        <p>Tell me a random fact</p>
+                    </div>
+                    
+                    <div class="example-card" onclick="askExample('Calculate 15 * 23 + 45')">
+                        <h4>🧮 Math Calculator</h4>
+                        <p>Calculate 15 * 23 + 45</p>
+                    </div>
+                    
+                    <div class="example-card" onclick="askExample('Greet me, my name is Alice')">
+                        <h4>👋 Personal Greeting</h4>
+                        <p>Greet me, my name is Alice</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const chatMessages = document.getElementById('chatMessages');
+        const messageInput = document.getElementById('messageInput');
+        const loading = document.getElementById('loading');
+
+        function addMessage(message, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message ' + (isUser ? 'user' : 'ai');
+            
+            if (isUser) {
+                messageDiv.innerHTML = '<strong>👤 You:</strong><br>' + message;
+            } else {
+                messageDiv.innerHTML = '<strong>🤖 AI Assistant:</strong><br>' + message;
+            }
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function askExample(question) {
+            messageInput.value = question;
+            sendMessage();
+        }
+
+        async function sendMessage() {
+            const message = messageInput.value.trim();
+            if (!message) return;
+
+            addMessage(message, true);
+            messageInput.value = '';
+            
+            loading.classList.add('show');
+            
+            try {
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'text/plain',
+                    },
+                    body: message
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const aiResponse = await response.text();
+                addMessage(aiResponse);
+            } catch (error) {
+                addMessage('Sorry, I encountered an error. Please try again.');
+                console.error('Error:', error);
+            } finally {
+                loading.classList.remove('show');
+            }
+        }
+
+        // Allow Enter key to send message
+        messageInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>

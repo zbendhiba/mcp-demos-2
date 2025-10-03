@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 Wanaku MCP Demos Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .portal-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .portal-header {
+            margin-bottom: 40px;
+        }
+
+        .portal-title {
+            font-size: 3rem;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .portal-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .portal-description {
+            font-size: 1rem;
+            color: #888;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .demos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .demo-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-color: #667eea;
+        }
+
+        .demo-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .demo-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .demo-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .demo-description {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .demo-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .demo-features li {
+            padding: 5px 0;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        .demo-features li::before {
+            content: '✓ ';
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .demo-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .demo-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .status-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-ready {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-coming-soon {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        @media (max-width: 768px) {
+            .portal-title {
+                font-size: 2rem;
+            }
+            
+            .demos-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="portal-container">
+        <div class="portal-header">
+            <h1 class="portal-title">🚀 Wanaku MCP Demos</h1>
+            <p class="portal-subtitle">Explore the power of Model Context Protocol with Wanaku</p>
+            <p class="portal-description">
+                Discover three different approaches to building AI-powered applications using Wanaku, 
+                from simple Quarkus tools to complex OpenAPI integrations and advanced market analysis.
+            </p>
+        </div>
+
+        <div class="demos-grid">
+            <!-- Demo 1: Quarkus Tools -->
+            <a href="/demo1" class="demo-card">
+                <span class="status-badge status-ready">Ready</span>
+                <span class="demo-icon">🌤️</span>
+                <h3 class="demo-title">Demo 1: Quarkus Tools</h3>
+                <p class="demo-description">
+                    Simple but engaging tools built with Quarkus MCP server. 
+                    Perfect for demonstrating basic MCP concepts.
+                </p>
+                <ul class="demo-features">
+                    <li>Weather simulation</li>
+                    <li>Random facts generator</li>
+                    <li>Simple calculator</li>
+                    <li>Greeting service</li>
+                </ul>
+                <span class="demo-button">Launch Demo 1</span>
+            </a>
+
+            <!-- Demo 2: Market Finance -->
+            <a href="/demo2" class="demo-card">
+                <span class="status-badge status-ready">Ready</span>
+                <span class="demo-icon">💰</span>
+                <h3 class="demo-title">Demo 2: Market Finance</h3>
+                <p class="demo-description">
+                    Advanced financial analysis dashboard powered by OpenAPI tools. 
+                    Real market data and sophisticated analysis.
+                </p>
+                <ul class="demo-features">
+                    <li>Real-time stock quotes</li>
+                    <li>Trend analysis</li>
+                    <li>Portfolio calculations</li>
+                    <li>Market comparisons</li>
+                </ul>
+                <span class="demo-button">Launch Demo 2</span>
+            </a>
+
+            <!-- Demo 3: Coming Soon -->
+            <div class="demo-card">
+                <span class="status-badge status-coming-soon">Coming Soon</span>
+                <span class="demo-icon">🎪</span>
+                <h3 class="demo-title">Demo 3: Advanced Integration</h3>
+                <p class="demo-description">
+                    Next-level Wanaku integration showcasing advanced OpenAPI capabilities 
+                    and complex tool orchestration.
+                </p>
+                <ul class="demo-features">
+                    <li>Multi-service integration</li>
+                    <li>Advanced tool chaining</li>
+                    <li>Real-time data processing</li>
+                    <li>Custom tool creation</li>
+                </ul>
+                <span class="demo-button" style="opacity: 0.6; cursor: not-allowed;">Coming Soon</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
