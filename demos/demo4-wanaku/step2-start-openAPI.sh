@@ -100,9 +100,12 @@ fi
 p ""
 
 # Step 7: Start the simple server
-p "📋 Step 7: Starting Market Data API Server..."
-p "🔍 This server provides:"
+p "📋 Step 7: Starting Smart Finance API Server..."
+p "🔍 This Smart Finance API provides:"
 p "   • Real-time market data (stock quotes, symbols)"
+p "   • Financial analysis and trend detection"
+p "   • Portfolio management and analysis"
+p "   • Market sector data and comparisons"
 p "   • RESTful API endpoints for financial data"
 p "   • Automatic OpenAPI specification generation"
 p "   • Interactive documentation with Swagger UI"
@@ -163,11 +166,14 @@ p "• The server provides sample market data with automatic OpenAPI generation"
 p ""
 
 # Step 12: Show useful commands
-p "📋 Useful commands:"
-p "• Use prompt: what is the latest AAPL market quote ? "
-p "• Check Wanaku server log : podman logs wanaku-router"
+p "📋 Useful commands and examples:"
+p "• Compare stocks: Compare AAPL and MSFT performance"
+p "• Analyze trends: What is the trend analysis for GOOGL?"
+p "• Portfolio analysis: Analyze my portfolio with AAPL, MSFT, GOOGL"
+p "• Market sectors: Show me technology sector performance"
+p "• Check Wanaku server log: podman logs wanaku-router"
 p "• Stop server: pkill -f yfinServer.py"
 p "• Wanaku tools: wanaku capabilities list"
 p ""
 
-p "🎉 Demo 4 completed! Simple OpenAPI server is running on port 8000 with Wanaku integration."
+p "🎉 Demo 4 completed! Smart Finance API server is running on port 8000 with Wanaku integration."
